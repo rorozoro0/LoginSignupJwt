@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('mongoose-type-email');
 mongoose.SchemaTypes.Email.defaults.message = 'Email address is invalid';
 
-
+// Schema for database collection
 const userSchema = new mongoose.Schema({
     name:{
         type:String,

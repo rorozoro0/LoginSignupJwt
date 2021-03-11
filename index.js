@@ -3,8 +3,10 @@ const router = express.Router();
 const app = express();
 const usersRouter = require('./routes/UserRoutes');
 
+
 app.use(express.json());
 
+//routes
 app.use('/api/user', usersRouter);
 
 app.use('/', router);

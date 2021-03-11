@@ -2,10 +2,12 @@ const UserModel = require('../model/userModel');
 const jwt = require('jsonwebtoken')
 const jwtKey = process.env.JWTKEY;
 
+// Signup controller
 exports.signUp = async (req, res) => {
     try {
         console.log(req.body);
         const newUser = await UserModel.create(req.body);
+        //generatin token
         const token = jwt.sign({userId:newUser._id},jwtKey);
             
         res.status(200).json({
@@ -20,6 +22,7 @@ exports.signUp = async (req, res) => {
     }
 }
 
+//Login Controller
 exports.logIn = async (req, res) => {
     
     const {mobile, password} = req.body;
@@ -46,6 +49,7 @@ exports.logIn = async (req, res) => {
     }
 }
 
+// Controller to get user details
 exports.getDetails = async (req, res) => {
 
     try{

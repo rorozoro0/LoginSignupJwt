@@ -11,11 +11,13 @@ module.exports = (req, res, next) => {
 
     const token = authorization.replace("Bearer ","");
 
+    //verifying token
     jwt.verify(token,jwtkey, async (err, playload) => {
         if(err){
             return res.status(401).send({error: "You must be logged in"});
         }
 
+        // destructuring data
         const { userId } = playload;
         const userData = await UserModel.findById(userId);
         
